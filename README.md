@@ -1,4 +1,4 @@
-# flutter_ocr_sage
+# POC de OCR desenvolvida com Flutter
 
 POC mobile utilizando Flutter para testar OC (Optical character recognition, ou Reconhecimento ótico de caracteres).
 
