@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "805317222789",
+    "firebase_url": "https://flutterocrsage.firebaseio.com",
+    "project_id": "flutterocrsage",
+    "storage_bucket": "flutterocrsage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805317222789:android:eaf73ce060cab1c0",
+        "android_client_info": {
+          "package_name": "com.example.flutter_ocr_sage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805317222789-7b63uumk28l0idktb24jhv5spvdiecen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzGNw7kHkmL__5N40fYvoLlnsXfRTG1yA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805317222789-7b63uumk28l0idktb24jhv5spvdiecen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
