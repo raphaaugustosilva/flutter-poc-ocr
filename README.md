@@ -1,16 +1,12 @@
 # flutter_ocr_sage
 
-A new Flutter project.
+POC mobile utilizando Flutter para testar OC (Optical character recognition, ou Reconhecimento ótico de caracteres).
 
-## Getting Started
+O projeto tem o propósito de fornecer ao usuário a possibilidade de tirar uma foto (ou escolher da galeria), aplicar o OCR e salvar os resultados em nuvem (utilizando o Firestore do Firebase), afim de verificarmos a eficiência dos resultados obtidos.
 
-This project is a starting point for a Flutter application.
+O provedor de OCR utilizado foi do Firebase (Google Cloud Vision).
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+# LINKS
+[Escreva seu primeiro aplicativo em Flutter](https://flutter.io/docs/get-started/codelab)
+[Documentação Flutter online](https://flutter.io/docs)
+[Configuração para implementar OCR do Firebase](https://firebase.google.com/docs/ml-kit/recognize-text)
