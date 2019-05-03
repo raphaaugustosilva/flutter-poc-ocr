@@ -13,8 +13,17 @@ class AbaTirarFoto extends StatefulWidget {
 
 class _AbaTirarFotoState extends State<AbaTirarFoto> {
   Uint8List fotoEmMemoria;
+  File _arquivoImagem;
   Map<String, dynamic> _textosEncontrados;
   bool _carregandoAnalise = false;
+
+  static const String _ordemLeituraDadosCimaBaixo = "De cima para baixo";
+  static const String _ordemLeituraDadosBaixoCima = "De baixo para cima";
+  static const String _ordemLeituraDadosEsquerdaDireita =
+      "Da esquerda para a direita";
+  static const String _ordemLeituraDadosDireitaEsquerda =
+      "Da direita para a esquerda";
+  String _ordemLeituraDadosSelecionada = _ordemLeituraDadosCimaBaixo;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +76,7 @@ class _AbaTirarFotoState extends State<AbaTirarFoto> {
                     SizedBox(width: 10),
                     GestureDetector(
                       onTap: () async {
-                        await _tirarFotoEAplicarOCR(ObterFotoEnum.galeria);                        
+                        await _tirarFotoEAplicarOCR(ObterFotoEnum.galeria);
                       },
                       child: Icon(
                         Icons.image,
@@ -81,6 +90,51 @@ class _AbaTirarFotoState extends State<AbaTirarFoto> {
               ],
             ),
           ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text("Ordem de leitura dos dados",
+                    style:
+                        TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                DropdownButton<String>(
+                  hint: Text("Ordem de leitura de dados:",
+                      maxLines: 1, style: TextStyle(fontSize: 12)),
+                  isDense: true,
+                  isExpanded: true,
+                  value: _ordemLeituraDadosSelecionada,
+                  onChanged: (String ordemLeituraDadosSelecionada) {
+                    setState(() {
+                      _ordemLeituraDadosSelecionada =
+                          ordemLeituraDadosSelecionada;
+                    });
+
+                    _aplicarOCR();
+                  },
+                  items: <String>{
+                    _ordemLeituraDadosCimaBaixo,
+                    _ordemLeituraDadosBaixoCima,
+                    _ordemLeituraDadosEsquerdaDireita,
+                    _ordemLeituraDadosDireitaEsquerda
+                  }
+                      .map<DropdownMenuItem<String>>(
+                          (String ordemLeituraDados) {
+                    return DropdownMenuItem<String>(
+                      value: ordemLeituraDados,
+                      child: Text(ordemLeituraDados ?? "",
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          softWrap: true,
+                          style: TextStyle(fontSize: 12)),
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
           Card(
             margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
             child: Padding(
@@ -119,7 +173,8 @@ class _AbaTirarFotoState extends State<AbaTirarFoto> {
       ),
       onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => FeedbackView(fotoEmMemoria, _textosEncontrados)));
+            builder: (context) =>
+                FeedbackView(fotoEmMemoria, _textosEncontrados)));
       },
       backgroundColor: Theme.of(context).primaryColor,
     );
@@ -150,16 +205,52 @@ class _AbaTirarFotoState extends State<AbaTirarFoto> {
     );
   }
 
+  OrdemLeituraDadosEnum _recuperaOrdemLeituraDadosEnum() {
+    switch (_ordemLeituraDadosSelecionada) {
+      case _ordemLeituraDadosCimaBaixo:
+        return OrdemLeituraDadosEnum.cimaParaBaixo;
+        break;
+
+      case _ordemLeituraDadosBaixoCima:
+        return OrdemLeituraDadosEnum.baixoParaCima;
+        break;
+
+      case _ordemLeituraDadosEsquerdaDireita:
+        return OrdemLeituraDadosEnum.esquerdaParaDireita;
+        break;
+
+      case _ordemLeituraDadosDireitaEsquerda:
+        return OrdemLeituraDadosEnum.diretaParaEsquerda;
+        break;
+
+      default:
+        return OrdemLeituraDadosEnum.cimaParaBaixo;
+        break;
+    }
+  }
+
   Future _tirarFotoEAplicarOCR(ObterFotoEnum obterFotoEnum) async {
-    File arquivoImagem = await FotoHelper.selecionarFoto(obterFotoEnum);
+    _arquivoImagem = await FotoHelper.selecionarFoto(obterFotoEnum);
     setState(() {
-      fotoEmMemoria = arquivoImagem.readAsBytesSync();
+      fotoEmMemoria = _arquivoImagem.readAsBytesSync();
     });
 
+    _aplicarOCR();
+  }
+
+  Future _aplicarOCR() async {
+    if (_arquivoImagem == null) return;
+
+    OrdemLeituraDadosEnum ordemLeituraDadosEnum =
+        _recuperaOrdemLeituraDadosEnum();
+        
     setState(() {
       _carregandoAnalise = true;
     });
-    var resultadoOCR = await OCRHelper.ocrFoto(arquivoImagem);
+
+    var resultadoOCR =
+        await OCRHelper.ocrFoto(_arquivoImagem, ordemLeituraDadosEnum);
+
     setState(() {
       _textosEncontrados = resultadoOCR;
       _carregandoAnalise = false;
