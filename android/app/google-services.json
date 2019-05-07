@@ -30,6 +30,13 @@
             {
               "client_id": "805317222789-7b63uumk28l0idktb24jhv5spvdiecen.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "805317222789-vln8930ns4hb9tjf3kvv8dj6rnkpkq3g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sage.flutterOcrSage"
+              }
             }
           ]
         }

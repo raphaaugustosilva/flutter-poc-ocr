@@ -27,7 +27,7 @@ class _FeedbackVisualizacaoViewState extends State<FeedbackVisualizacaoView> {
             Row(children: <Widget>[
               Text("Data: ", style: TextStyle(fontWeight: FontWeight.bold)),
               Text(DateFormat("dd/MM/yyyy hh:mm")
-                  .format(widget.resultadosFeedback["dataHora"])),
+                  .format(widget.resultadosFeedback["dataHora"].toDate())),
             ]),
             SizedBox(height: 20),
             Row(children: <Widget>[

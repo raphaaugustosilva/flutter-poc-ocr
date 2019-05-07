@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Runner.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>628A459C963B9541F471A003CED9112EB7EF9864</string>
+				<key>dateExpires</key>
+				<string>05/02/20</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>628A459C963B9541F471A003CED9112EB7EF9864</string>
+						<key>dateExpires</key>
+						<string>05/02/20</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>App.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>AN8YKZK4DA</string>
+						<key>name</key>
+						<string>Sage Global Services Ltd</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>628A459C963B9541F471A003CED9112EB7EF9864</string>
+						<key>dateExpires</key>
+						<string>05/02/20</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>Flutter.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>AN8YKZK4DA</string>
+						<key>name</key>
+						<string>Sage Global Services Ltd</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>AN8YKZK4DA.com.sage.flutterOcrSage</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>AN8YKZK4DA</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>AN8YKZK4DA.com.sage.flutterOcrSage</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Runner.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>fc47ffa0-cf46-4980-9ea5-57b426557749</string>
+				<key>name</key>
+				<string>XC Wildcard</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>AN8YKZK4DA</string>
+				<key>name</key>
+				<string>Sage Global Services Ltd</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
