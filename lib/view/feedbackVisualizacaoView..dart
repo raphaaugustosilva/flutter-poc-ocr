@@ -26,8 +26,8 @@ class _FeedbackVisualizacaoViewState extends State<FeedbackVisualizacaoView> {
             SizedBox(height: 8),
             Row(children: <Widget>[
               Text("Data: ", style: TextStyle(fontWeight: FontWeight.bold)),
-              Text(DateFormat("dd/MM/yyyy hh:mm")
-                  .format(widget.resultadosFeedback["dataHora"].toDate())),
+              Text(_converterParaDataFormatada(
+                  widget.resultadosFeedback["dataHora"])),
             ]),
             SizedBox(height: 20),
             Row(children: <Widget>[
@@ -70,5 +70,20 @@ class _FeedbackVisualizacaoViewState extends State<FeedbackVisualizacaoView> {
         ),
       ),
     );
+  }
+
+  String _converterParaDataFormatada(var data) {
+    String dataFormatada = "";
+    try {
+      dataFormatada = DateFormat("dd/MM/yyyy hh:mm").format(data.toDate());
+    } catch (ex) {
+      try {
+        dataFormatada = DateFormat("dd/MM/yyyy hh:mm").format(data);
+      } catch (e) {
+        dataFormatada = data.toString();
+      }
+    }
+
+    return dataFormatada;
   }
 }
